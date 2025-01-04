@@ -2,20 +2,24 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 
-
+//モーダルの状態を設定する
 const initialState = {
+    //デフォルトでは活性化していない状態
     isOpen: false,
     
 };
+
 const modalSlice = createSlice(
     {
         name: "modal",
         initialState,
         reducers:{
-            openModal:(state,action) => {
+            //モーダルを出すアクションクリエーター
+            openModal: state => {
                 state.isOpen = true;
             },
-            closeModal:(state,action) => {
+            //モーダルを閉じるアクションクリエーター
+            closeModal: state => {
                 state.isOpen = false;
             }
         }

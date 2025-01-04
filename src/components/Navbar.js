@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux'
 import { CartIcon } from '../HeroIcons';
 
 const Navbar = () => {
+    //storeからカート内のアイテム数を取得する
+    const { amount } = useSelector( state => state.cart);
 
-    const {amount} = useSelector((store) => store.cart);
-
-  return (
+    return (
    <nav>
     <div className="nav-center">
         <h3>Redux Shopping</h3>
@@ -22,4 +22,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Navbar;

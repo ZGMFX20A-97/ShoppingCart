@@ -4,9 +4,12 @@ import { PlusButton,MinusButton } from '../HeroIcons'
 import { useDispatch } from 'react-redux'
 import { increase,decrease, removeItem } from '../features/cart/CartSlice'
 
-const CartItem = ({id,img,title,price,amount}) => {
+const CartItem = ({ id,img,title,price,amount }) => {
+
         const dispatch = useDispatch();
-  return (
+
+    return (
+
     <article className="cart-item">
         <img src={img} alt="/" />
         <div>
@@ -20,10 +23,12 @@ const CartItem = ({id,img,title,price,amount}) => {
             </button>
             <p className="amount">{amount}</p>
             <button className="amount-btn" onClick={() => {
+                // もしアイテム数が１の時は削除する
                 if(amount === 1){
                     dispatch(removeItem(id));
                     return;
                 }
+                //それ以外の場合は１減らす
                 dispatch(decrease(id));
                 
             }}>
@@ -34,4 +39,4 @@ const CartItem = ({id,img,title,price,amount}) => {
   )
 }
 
-export default CartItem
+export default CartItem;

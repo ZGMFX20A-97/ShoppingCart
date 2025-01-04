@@ -10,17 +10,20 @@ import Modal from './components/Modal';
 
 
 function App() {
-  const dispatch = useDispatch();
-  const {cartItems} = useSelector((state) => state.cart);
-  const {isOpen} = useSelector((state) => state.modal);
 
-  useEffect(() =>{
+  const dispatch = useDispatch();
+  const { cartItems } = useSelector( state => state.cart);
+  const { isOpen } = useSelector( state => state.modal);
+  //アイテムの内容が変化するたびに合計金額と合計アイテム数を計算する
+  useEffect(() => {
     dispatch(calculateTotals());
+
   },[cartItems])
 
   
   return (
     <main>
+      {/* もしisOpenがtrueの場合モーダルコンポーネントを表示する */}
       {isOpen && <Modal />}
       <Navbar />
       <CartContainer />
